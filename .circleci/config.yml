@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build_and_deploy:
     docker:
       - image: cimg/node:16.17.0
     working_directory: ~/repo
@@ -36,7 +36,7 @@ jobs:
 workflows:
   build_and_deploy:
     jobs:
-      - build:
+      - build_and_deploy:
           filters:
             branches:
               only: main
