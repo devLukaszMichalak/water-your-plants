@@ -22,7 +22,7 @@ jobs:
             - ~/.npm
       - run:
           name: Build project
-          command: npm run build -- --prod
+          command: npm run build --prod
       - run:
           name: Inject Firebase configuration
           command: |
