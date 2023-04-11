@@ -97,6 +97,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "water-your-plants:build:production",
+            "firebaseProject": "water-your-plant",
+            "firebaseHostingSite": "water-your-plant"
+          }
         }
       }
     }

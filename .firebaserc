@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "water-your-plant": {
+      "hosting": {
+        "water-your-plants": [
+          "water-your-plant"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "water-your-plant"
+  }
+}
