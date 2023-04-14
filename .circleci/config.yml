@@ -35,11 +35,18 @@ jobs:
       - run:
           name: Build project
           command: npm run build --prod
-      - deploy:
-          name: Deploy to Firebase Hosting
+      - run:
+          name: Set up service account keys
           command: |
-            sudo npm install -g firebase-tools
-            firebase deploy --only hosting --token $FIREBASE_TOKEN
+            touch keys.json
+            echo "export ${WATER_YOUR_PLANTS_SERVICE_ACCOUT_KEYS}" > keys.json
+      - environment:
+          GOOGLE_APPLICATION_CREDENTIALS: keys.json
+          run:
+            name: Deploy to Firebase Hosting
+            command: |
+              npm install -g firebase-tools
+              firebase deploy --only hosting
 
 workflows:
   build_and_deploy:
