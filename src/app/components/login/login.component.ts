@@ -30,15 +30,11 @@ export class LoginComponent {
 
 
   logIn() {
-    console.log(this.logInForm.value.email!)
-    console.log(this.logInForm.value.password!)
-    // this.authService.signInUser(this.logInForm.value.email!, this.logInForm.value.password!);
+    this.authService.logInUser(this.logInForm.value.email!, this.logInForm.value.password!);
   }
 
   signUp() {
-    console.log(this.signUpForm.value.email!)
-    console.log(this.signUpForm.value.password!)
-    // this.authService.createUser(this.signUpForm.value.email!, this.signUpForm.value.password!);
+    this.authService.createUser(this.signUpForm.value.email!, this.signUpForm.value.password!);
   }
 
   private sameFieldValues(firstControlName: string, secondControlName: string): ValidatorFn {
