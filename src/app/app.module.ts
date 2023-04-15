@@ -11,6 +11,7 @@ import {environment} from "../environments/environment";
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage'
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {getStorage, provideStorage} from '@angular/fire/storage'
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

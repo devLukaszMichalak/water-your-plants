@@ -11,7 +11,7 @@ export class LoginComponent {
 
   private authService = inject(AuthService)
 
-  signInForm = new FormGroup(
+  logInForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
@@ -29,12 +29,16 @@ export class LoginComponent {
   );
 
 
-  signIn() {
-    this.authService.signInUser(this.signInForm.value.email!, this.signInForm.value.password!);
+  logIn() {
+    console.log(this.logInForm.value.email!)
+    console.log(this.logInForm.value.password!)
+    // this.authService.signInUser(this.logInForm.value.email!, this.logInForm.value.password!);
   }
 
   signUp() {
-    this.authService.createUser(this.signUpForm.value.email!, this.signUpForm.value.password!);
+    console.log(this.signUpForm.value.email!)
+    console.log(this.signUpForm.value.password!)
+    // this.authService.createUser(this.signUpForm.value.email!, this.signUpForm.value.password!);
   }
 
   private sameFieldValues(firstControlName: string, secondControlName: string): ValidatorFn {
