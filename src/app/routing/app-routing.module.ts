@@ -2,13 +2,13 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from "../components/dashboard/dashboard.component";
 import {LoginComponent} from "../components/login/login.component";
-import {pageRouts} from "./pages";
+import {PageRouts} from "./pages";
 
 const routes: Routes = [
-  {path: pageRouts.DASHBOARD, component: DashboardComponent},
-  {path: pageRouts.LOGIN, component: LoginComponent},
-  {path: '', redirectTo: pageRouts.LOGIN, pathMatch: 'full'},
-  {path: '**', redirectTo: pageRouts.LOGIN, pathMatch: 'full'}
+  {path: PageRouts.DASHBOARD, component: DashboardComponent},
+  {path: PageRouts.LOGIN, component: LoginComponent},
+  {path: '', redirectTo: PageRouts.LOGIN, pathMatch: 'full'},
+  {path: '**', redirectTo: PageRouts.LOGIN, pathMatch: 'full'}
 ];
 
 @NgModule({
