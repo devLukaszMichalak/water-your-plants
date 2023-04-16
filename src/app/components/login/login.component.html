@@ -16,8 +16,8 @@
         <div class="card-header">Log in</div>
 
         <div class="card-body" [formGroup]="logInForm">
-          <input type="text" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
-          <input type="text" placeholder="Password" aria-label="Password" class="form-control"
+          <input type="email" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
+          <input type="password" placeholder="Password" aria-label="Password" class="form-control"
                  formControlName="password">
 
           <div *ngIf="logInFailed" class="alert alert-danger mt-3" role="alert">
@@ -39,10 +39,10 @@
         <div class="card-header">Sign up</div>
 
         <div class="card-body" [formGroup]="signUpForm">
-          <input type="text" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
-          <input type="text" placeholder="Password" aria-label="Password" class="form-control mb-3"
+          <input type="email" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
+          <input type="password" placeholder="Password" aria-label="Password" class="form-control mb-3"
                  formControlName="password">
-          <input type="text" placeholder="Repeat password" aria-label="Repeat password" class="form-control"
+          <input type="password" placeholder="Repeat password" aria-label="Repeat password" class="form-control"
                  formControlName="repeatPassword">
 
           <div *ngIf="signUpFailed" class="alert alert-danger mt-3" role="alert">
