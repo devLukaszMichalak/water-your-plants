@@ -17,6 +17,36 @@ export class LoginComponent {
   signUpFailed: boolean = false;
   logInFailed: boolean = false;
 
+  readonly FIRST_HEADER_LINE: string[] = [
+    'Remember,',
+    'Dear plant lover,',
+    'Hello fellow plant enthusiast,',
+    'Just a friendly reminder,',
+    'Greetings,',
+    'To my fellow plant lover,',
+    'It\'s plant care time,',
+    'Hello there,',
+    'For the love of plants,',
+    'Hey plant parent,',
+    'Dear gardening enthusiast,',
+    'Attention plant lover,']
+  readonly SECOND_HEADER_LINE: string[] = [
+    'watering your plants is important!',
+    'water your plants!',
+    'don\'t forget to water your plants!',
+    'make sure to give your plants a drink!',
+    'don\'t forget to water your green friends!',
+    'your plants need water to thrive!',
+    'watering your plants is key to their survival!',
+    'keep your plants hydrated with some H2O!',
+    'your plants will thank you for watering them!',
+    'give your plants the gift of hydration!',
+    'watering your plants is a vital task!',
+    'show your plants some love with water!',
+    'a little water can go a long way for your plants!'
+  ]
+
+
   logInForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required]),
@@ -75,4 +105,11 @@ export class LoginComponent {
     };
   }
 
+  getFirstHeaderText(): string {
+    return this.FIRST_HEADER_LINE[Math.floor(Math.random() * this.FIRST_HEADER_LINE.length)]
+  }
+
+  getSecondHeaderText(): string {
+    return this.SECOND_HEADER_LINE[Math.floor(Math.random() * this.SECOND_HEADER_LINE.length)]
+  }
 }

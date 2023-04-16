@@ -1,47 +1,66 @@
 <div class="d-flex justify-content-center align-items-center w-100 h-100">
-  <div class="card-group w-75" >
-    <div class="card">
-      <div class="card-header">Log in</div>
 
-      <div class="card-body" [formGroup]="logInForm">
-        <input type="text" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
-        <input type="text" placeholder="Password" aria-label="Password" class="form-control" formControlName="password">
+  <div class="d-flex flex-column gap-2">
 
-        <div *ngIf="logInFailed" class="alert alert-danger mt-3" role="alert">
-          <span>Failed to log in.</span>
+    <div class="card-group w-75">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center fw-bold">{{getFirstHeaderText()}}</div>
+          <div class="text-center fw-bold">{{getSecondHeaderText()}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-group w-75">
+      <div class="card">
+        <div class="card-header">Log in</div>
+
+        <div class="card-body" [formGroup]="logInForm">
+          <input type="text" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
+          <input type="text" placeholder="Password" aria-label="Password" class="form-control"
+                 formControlName="password">
+
+          <div *ngIf="logInFailed" class="alert alert-danger mt-3" role="alert">
+            <span>Failed to log in.</span>
+          </div>
+
+        </div>
+
+        <div class="card-footer text-end">
+          <button type="button" class="btn"
+                  [ngClass]="logInForm.valid ? 'btn-primary' : 'btn-outline-primary'"
+                  [disabled]="!logInForm.valid"
+                  (click)="logIn()">Log in
+          </button>
         </div>
 
       </div>
+      <div class="card">
+        <div class="card-header">Sign up</div>
 
-      <div class="card-footer text-end">
-        <button type="button" class="btn"
-                [ngClass]="logInForm.valid ? 'btn-primary' : 'btn-outline-primary'"
-                [disabled]="!logInForm.valid"
-                (click)="logIn()">Log in</button>
-      </div>
+        <div class="card-body" [formGroup]="signUpForm">
+          <input type="text" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
+          <input type="text" placeholder="Password" aria-label="Password" class="form-control mb-3"
+                 formControlName="password">
+          <input type="text" placeholder="Repeat password" aria-label="Repeat password" class="form-control"
+                 formControlName="repeatPassword">
 
-    </div>
-    <div class="card">
-      <div class="card-header">Sign up</div>
+          <div *ngIf="signUpFailed" class="alert alert-danger mt-3" role="alert">
+            <span>Failed to sign up.</span>
+          </div>
 
-      <div class="card-body" [formGroup]="signUpForm">
-        <input type="text" placeholder="E-mail" aria-label="E-mail" class="form-control mb-3" formControlName="email">
-        <input type="text" placeholder="Password" aria-label="Password" class="form-control mb-3" formControlName="password">
-        <input type="text" placeholder="Repeat password" aria-label="Repeat password" class="form-control" formControlName="repeatPassword">
+        </div>
 
-        <div *ngIf="signUpFailed" class="alert alert-danger mt-3" role="alert">
-          <span>Failed to sign up.</span>
+        <div class="card-footer text-end">
+          <button type="button" class="btn"
+                  [ngClass]="signUpForm.valid ? 'btn-primary' : 'btn-outline-primary'"
+                  [disabled]="!signUpForm.valid"
+                  (click)="signUp()">Sign up
+          </button>
         </div>
 
       </div>
-
-      <div class="card-footer text-end">
-        <button type="button" class="btn"
-                [ngClass]="signUpForm.valid ? 'btn-primary' : 'btn-outline-primary'"
-                [disabled]="!signUpForm.valid"
-                (click)="signUp()">Sign up</button>
-      </div>
-
     </div>
+
   </div>
 </div>
