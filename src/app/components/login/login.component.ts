@@ -46,7 +46,6 @@ export class LoginComponent {
     'a little water can go a long way for your plants!'
   ]
 
-
   logInForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required]),
@@ -63,8 +62,7 @@ export class LoginComponent {
     this.sameFieldValues('password', 'repeatPassword')
   );
 
-
-  logIn() {
+  logIn(): void {
     this.logInFailed = false;
     this.authService.logInUser(this.logInForm.value.email!, this.logInForm.value.password!)
       .then(isAuthenticated => {
@@ -76,7 +74,7 @@ export class LoginComponent {
       })
   }
 
-  signUp() {
+  signUp(): void {
     this.signUpFailed = false;
     this.authService.createUser(this.signUpForm.value.email!, this.signUpForm.value.password!)
       .then(isAuthenticated => {
