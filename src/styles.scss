@@ -1,3 +1,17 @@
+$light-green: rgba(120, 176, 159, 0.87) !important;
+
+$grey: #c7c7c7 !important;
+
+$dark-green: rgba(1, 84, 81, 0.9) !important;
+$darker-green: rgba(0, 42, 41, 0.87) !important;
+
+$yellow: rgba(249, 188, 96, 0.89) !important;
+$darker-yellow: rgba(227, 150, 52, 0.89) !important;
+$darkest-yellow: rgba(189, 116, 24, 0.86) !important;
+
+$red: #e16162 !important;
+$darker-red: #572c2c !important;
+
 body {
   position: absolute;
   top: 0;
@@ -6,4 +20,75 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: $light-green;
+}
+
+.card {
+  background-color: $dark-green;
+
+  .card-header {
+    background-color: $darker-green;
+  }
+
+  color: $light-green;
+}
+
+.form-control {
+  border-color: $dark-green;
+  background-color: $light-green;
+  color: $darker-green;
+
+  &:focus {
+    border-color: $yellow;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 6px $yellow;
+  }
+
+  &::placeholder {
+    color: $grey;
+  }
+}
+
+.btn-primary {
+  background-color: $yellow;
+  border-color: $yellow;
+  color: $darker-green;
+  font-weight: bold !important;
+
+  &:hover {
+    background-color: $darker-yellow;
+    border-color: $darker-yellow;
+    font-weight: bold !important;
+  }
+
+  &:active {
+    background-color: $darkest-yellow;
+    border-color: $darkest-yellow;
+    font-weight: bold !important;
+  }
+}
+
+.btn-outline-primary {
+  color: $yellow;
+  border-color: $yellow;
+  font-weight: bold !important;
+
+  &:hover {
+    color: $darker-green;
+    background-color: $darker-yellow;
+    border-color: $darker-yellow;
+    font-weight: bold !important;
+  }
+
+  &:active {
+    color: $darker-green;
+    background-color: $darkest-yellow;
+    border-color: $darkest-yellow;
+    font-weight: bold !important;
+  }
+}
+
+.alert {
+  border-color: $red;
+  background-color: $red;
+  color: $darker-red;
 }
