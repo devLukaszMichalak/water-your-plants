@@ -1,5 +1,5 @@
-import {Component, inject} from '@angular/core';
-import {AuthService} from "../../services/auth.service";
+import {Component, inject, OnInit} from '@angular/core';
+import {AuthService} from "../../services/auth/auth.service";
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {getRouterLink, PageRouts} from '../../routing/pages';
 import {Router} from '@angular/router';
@@ -9,13 +9,16 @@ import {Router} from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   private authService = inject(AuthService)
   private router = inject(Router)
 
   signUpFailed: boolean = false;
   logInFailed: boolean = false;
+
+  firstHeaderText: string = '';
+  secondHeaderText: string = '';
 
   readonly FIRST_HEADER_LINE: string[] = [
     'Remember,',
@@ -61,6 +64,11 @@ export class LoginComponent {
     },
     this.sameFieldValues('password', 'repeatPassword')
   );
+
+  ngOnInit(): void {
+    this.firstHeaderText = this.getFirstHeaderText();
+    this.secondHeaderText = this.getSecondHeaderText();
+  }
 
   logIn(): void {
     this.logInFailed = false;
