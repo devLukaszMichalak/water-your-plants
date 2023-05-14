@@ -1,6 +1,6 @@
 $light-green: rgba(149, 213, 194, 0.87) !important;
 
-$grey: #a19e9e !important;
+$grey: #938f8f !important;
 
 $dark-green: rgba(1, 106, 101, 0.9) !important;
 $darker-green: rgba(0, 77, 75, 0.87) !important;
@@ -100,17 +100,17 @@ body {
 
 .modal-footer {
   border-color: $light-green;
-  background-color: $darker-green;
+  background-color: $dark-green;
 }
 
 .modal-body {
-  background-color: $darker-green;
+  background-color: $dark-green;
   color: $light-green;
 }
 
 .modal-header {
   background-color: $darker-green;
-  border-color: $light-green;
+  border: 0 !important;
   color: $light-green;
 }
 
