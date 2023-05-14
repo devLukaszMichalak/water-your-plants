@@ -1,6 +1,6 @@
 $light-green: rgba(149, 213, 194, 0.87) !important;
 
-$grey: #c7c7c7 !important;
+$grey: #a19e9e !important;
 
 $dark-green: rgba(1, 106, 101, 0.9) !important;
 $darker-green: rgba(0, 77, 75, 0.87) !important;
@@ -25,12 +25,13 @@ body {
 
 .card {
   background-color: $dark-green;
+  color: $light-green;
+  border-color: $darker-green;
 
   .card-header {
     background-color: $darker-green;
+    border-color: $darker-green;
   }
-
-  color: $light-green;
 }
 
 .form-control {
@@ -53,8 +54,10 @@ body {
   border-color: $yellow;
   color: $darker-green;
   font-weight: bold !important;
+  transition: transform 0.2s !important;
 
   &:hover {
+    transform: scale(1.1);
     background-color: $darker-yellow;
     border-color: $darker-yellow;
     font-weight: bold !important;
@@ -71,8 +74,10 @@ body {
   color: $yellow;
   border-color: $yellow;
   font-weight: bold !important;
+  transition: transform 0.2s !important;
 
   &:hover {
+    transform: scale(1.1);
     color: $darker-green;
     background-color: $darker-yellow;
     border-color: $darker-yellow;
@@ -91,4 +96,28 @@ body {
   border-color: $red;
   background-color: $red;
   color: $darker-red;
+}
+
+.modal-footer {
+  border-color: $darker-green;
+  background-color: $light-green;
+}
+
+.modal-body {
+  background-color: $light-green;
+  color: $darker-green;
+}
+
+.modal-header {
+  background-color: $light-green;
+  border-color: $darker-green;
+  color: $darker-green;
+}
+
+.card-group > .card:not(:last-child) {
+  border-color: $darker-green;
+}
+
+.card-group > .card:not(:first-child) {
+  border-color: $darker-green;
 }

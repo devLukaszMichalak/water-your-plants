@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {PlantCreatorModalComponent} from "./new-plant-card/plant-creator-modal/plant-creator-modal.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +8,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
 }

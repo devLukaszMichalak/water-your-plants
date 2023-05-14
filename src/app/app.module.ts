@@ -12,8 +12,9 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage'
 import {ReactiveFormsModule} from '@angular/forms';
-import { PlantCardComponent } from './components/dashboard/plant-card/plant-card.component';
-import { NewPlantCardComponent } from './components/dashboard/new-plant-card/new-plant-card.component';
+import {PlantCardComponent} from './components/dashboard/plant-card/plant-card.component';
+import {NewPlantCardComponent} from './components/dashboard/new-plant-card/new-plant-card.component';
+import {PlantCreatorModalComponent} from './components/dashboard/new-plant-card/plant-creator-modal/plant-creator-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewPlantCardComponent } from './components/dashboard/new-plant-card/new
     LoginComponent,
     DashboardComponent,
     PlantCardComponent,
-    NewPlantCardComponent
+    NewPlantCardComponent,
+    PlantCreatorModalComponent
   ],
   imports: [
     BrowserModule,

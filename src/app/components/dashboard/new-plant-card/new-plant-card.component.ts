@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {PlantCreatorModalComponent} from "./plant-creator-modal/plant-creator-modal.component";
 
 @Component({
   selector: 'app-new-plant-card',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class NewPlantCardComponent {
 
+  constructor(private modalService: NgbModal) {
+  }
+
+  openPlantCreator(): void {
+    const modalRef = this.modalService.open(PlantCreatorModalComponent, { backdrop: 'static' });
+  }
 }
