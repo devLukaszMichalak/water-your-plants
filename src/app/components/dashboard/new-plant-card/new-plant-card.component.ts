@@ -13,6 +13,10 @@ export class NewPlantCardComponent {
   }
 
   openPlantCreator(): void {
-    const modalRef = this.modalService.open(PlantCreatorModalComponent, { backdrop: 'static' });
+    const modalRef = this.modalService.open(PlantCreatorModalComponent,
+      {
+        backdrop: 'static',
+        centered: true
+      });
   }
 }

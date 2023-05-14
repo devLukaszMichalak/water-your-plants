@@ -99,19 +99,23 @@ body {
 }
 
 .modal-footer {
-  border-color: $darker-green;
-  background-color: $light-green;
+  border-color: $light-green;
+  background-color: $darker-green;
 }
 
 .modal-body {
-  background-color: $light-green;
-  color: $darker-green;
+  background-color: $darker-green;
+  color: $light-green;
 }
 
 .modal-header {
-  background-color: $light-green;
+  background-color: $darker-green;
+  border-color: $light-green;
+  color: $light-green;
+}
+
+.modal-content {
   border-color: $darker-green;
-  color: $darker-green;
 }
 
 .card-group > .card:not(:last-child) {
