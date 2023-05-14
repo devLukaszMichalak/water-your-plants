@@ -1,0 +1,28 @@
+.card {
+  transition: transform 0.2s;
+  width: 180px;
+  height: 250px;
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.big-flower-sign {
+  font-size: 120px;
+}
+
+.text-above-img-margin {
+  margin-top: 17px;
+  margin-bottom: 17px;
+}
+
+.name-container {
+  height: 24px;
+  width: 100%;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -12,12 +12,16 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage'
 import {ReactiveFormsModule} from '@angular/forms';
+import { PlantCardComponent } from './components/dashboard/plant-card/plant-card.component';
+import { NewPlantCardComponent } from './components/dashboard/new-plant-card/new-plant-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    PlantCardComponent,
+    NewPlantCardComponent
   ],
   imports: [
     BrowserModule,
