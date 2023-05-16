@@ -1,13 +1,7 @@
-$light-green: rgba(149, 213, 194, 0.87) !important;
-
-$grey: #938f8f !important;
-
-$dark-green: rgba(1, 106, 101, 0.9) !important;
-$darker-green: rgba(0, 77, 75, 0.87) !important;
-
-$yellow: rgba(249, 188, 96, 0.89) !important;
-$darker-yellow: rgba(227, 150, 52, 0.89) !important;
-$darkest-yellow: rgba(189, 116, 24, 0.86) !important;
+$accent: #adb5bd !important;
+$primary: #343a40 !important;
+$darker-primary: #2e343a !important;
+$darkest-primary: #272c31 !important;
 
 $red: #e16162 !important;
 $darker-red: #572c2c !important;
@@ -20,74 +14,73 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: $light-green;
+  background-color: $darkest-primary;
 }
 
 .card {
-  background-color: $dark-green;
-  color: $light-green;
-  border-color: $darker-green;
+  background-color: $primary;
+  color: $accent;
+  border-color: $accent;
 
   .card-header {
-    background-color: $darker-green;
-    border-color: $darker-green;
+    color: $darkest-primary;
+    background-color: $accent;
+    border-color: $accent;
   }
 }
 
 .form-control {
-  border-color: $dark-green;
-  background-color: $light-green;
-  color: $darker-green;
+  border-color: $primary;
+  background-color: $darkest-primary;
+  color: $accent;
 
   &:focus {
-    border-color: $yellow;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 6px $yellow;
+    border-color: $primary;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 6px $accent;
   }
 
   &::placeholder {
-    color: $grey;
+    color: $accent;
   }
 }
 
 .btn-primary {
-  background-color: $yellow;
-  border-color: $yellow;
-  color: $darker-green;
+  background-color: $accent;
+  border-color: $accent;
+  color: $darkest-primary;
   font-weight: bold !important;
   transition: transform 0.2s !important;
 
   &:hover {
     transform: scale(1.1);
-    background-color: $darker-yellow;
-    border-color: $darker-yellow;
-    font-weight: bold !important;
   }
 
   &:active {
-    background-color: $darkest-yellow;
-    border-color: $darkest-yellow;
+    background-color: $darkest-primary;
+    border-color: $darkest-primary;
+    color: $accent;
     font-weight: bold !important;
   }
 }
 
 .btn-outline-primary {
-  color: $yellow;
-  border-color: $yellow;
+  color: $accent;
+  border-color: $accent;
   font-weight: bold !important;
   transition: transform 0.2s !important;
 
   &:hover {
     transform: scale(1.1);
-    color: $darker-green;
-    background-color: $darker-yellow;
-    border-color: $darker-yellow;
+    color: $accent;
+    background-color: $darker-primary;
+    border-color: $accent;
     font-weight: bold !important;
   }
 
   &:active {
-    color: $darker-green;
-    background-color: $darkest-yellow;
-    border-color: $darkest-yellow;
+    color: $accent;
+    background-color: $darkest-primary;
+    border-color: $accent;
     font-weight: bold !important;
   }
 }
@@ -99,29 +92,29 @@ body {
 }
 
 .modal-footer {
-  border-color: $light-green;
-  background-color: $dark-green;
+  border-color: $accent;
+  background-color: $primary;
 }
 
 .modal-body {
-  background-color: $dark-green;
-  color: $light-green;
+  background-color: $primary;
+  color: $accent;
 }
 
 .modal-header {
-  background-color: $darker-green;
+  background-color: $accent;
   border: 0 !important;
-  color: $light-green;
+  color: $darkest-primary;
 }
 
 .modal-content {
-  border-color: $darker-green;
+  border-color: $accent;
 }
 
 .card-group > .card:not(:last-child) {
-  border-color: $darker-green;
+  border-color: $accent;
 }
 
 .card-group > .card:not(:first-child) {
-  border-color: $darker-green;
+  border-color: $accent;
 }
