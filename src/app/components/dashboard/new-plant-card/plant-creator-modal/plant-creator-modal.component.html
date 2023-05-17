@@ -1,10 +1,17 @@
 <div class="modal-header">
-  <h4>Hi there!</h4>
+  <h4>Create new plant</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
 </div>
-<div ngbAutofocus class="modal-body">
-  <p>Hello, World!</p>
+
+<div class="modal-body d-flex flex-column gap-3" [formGroup]="newPlantForm">
+  <input placeholder="Plant's name" class="form-control" formControlName="name">
+  <input type="number" placeholder="Watering times per day" class="form-control" formControlName="waterPerDay">
+  <input type="number" placeholder="Watering times per week" class="form-control" formControlName="waterPerWeek">
+  <a class="btn custom-input-btn" (click)="getFile()" type="button">{{imageFilename}}</a>
+  <input class="form-control d-none" type="file" id="formFile" (change)="uploadFile($event)">
+
 </div>
+
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="close()">Close</button>
+  <button type="button" class="btn btn-primary" (click)="save()">Save</button>
 </div>

@@ -1,9 +1,21 @@
-.btn-close {
-  border-color: transparent;
-  transition: transform 0.2s;
+@use 'styles';
 
+.btn-close {
+  border-color: transparent !important;
+  transition: transform 0.2s !important;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
   }
 }
 
+.custom-input-btn {
+  border-color: styles.$primary;
+  background-color: styles.$darkest-primary;
+  color: styles.$accent;
+  text-align: start !important;
+
+  &:active {
+    border-color: styles.$primary;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 6px styles.$accent;
+  }
+}
