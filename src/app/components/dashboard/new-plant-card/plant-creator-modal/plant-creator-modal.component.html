@@ -13,5 +13,9 @@
 </div>
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  <button *ngIf="!isSaving" type="button" class="btn btn-primary" (click)="save()">Save</button>
+  <button *ngIf="isSaving" class="btn btn-primary" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
 </div>

@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {UserCredential} from "@firebase/auth";
+import {User, UserCredential} from "@firebase/auth";
 import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth';
 
 @Injectable({
@@ -10,6 +10,14 @@ export class AuthService {
   private currentUserCredential: UserCredential | null = null;
 
   private auth = inject(Auth)
+
+  getCurrentUser(): User {
+    if (this.currentUserCredential) {
+      return this.currentUserCredential.user;
+    } else {
+      throw new Error("No user when one was expected!")
+    }
+  }
 
   isAuthenticated(): boolean {
     return this.currentUserCredential !== null;
