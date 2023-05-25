@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 export class PlantCardComponent {
 
   @Input()
-  plantImageUrl?: string;
+  plantImageUrl: string | null = null;
 
   @Input()
   plantName: string = 'Plant name';

@@ -1,11 +1,7 @@
 <div class="d-flex flex-row gap-4 m-5 flex-wrap justify-content-center">
-  <app-plant-card [plantImageUrl]=""></app-plant-card>
-  <app-plant-card
-    [plantImageUrl]="'https://avatars.githubusercontent.com/u/43554417?v=4'"
-    [plantName]="'dso dsad sa das d as'">
-  </app-plant-card>
-  <app-plant-card
-    [plantImageUrl]="'https://avatars.githubusercontent.com/u/43554417?v=4'">
+  <app-plant-card *ngFor="let plant of plants$ | async"
+    [plantImageUrl]="plant.image"
+    [plantName]="plant.name">
   </app-plant-card>
 
   <app-new-plant-card></app-new-plant-card>

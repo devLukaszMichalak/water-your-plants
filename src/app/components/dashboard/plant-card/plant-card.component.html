@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body d-flex flex-column align-items-center justify-content-center">
     <div class="name-container text-center">{{plantName}}</div>
-    <img class="w-100 text-above-img-margin" *ngIf="plantImageUrl !== undefined" [src]="plantImageUrl" alt="plant-image">
-    <i *ngIf="plantImageUrl === undefined" class="bi bi-flower1 big-flower-sign"></i>
+    <img class="text-above-img-margin" *ngIf="plantImageUrl !== null" [src]="plantImageUrl" alt="plant-image">
+    <i *ngIf="plantImageUrl === null" class="bi bi-flower1 big-flower-sign"></i>
   </div>
 </div>

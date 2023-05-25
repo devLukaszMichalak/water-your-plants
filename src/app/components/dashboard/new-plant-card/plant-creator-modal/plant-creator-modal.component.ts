@@ -37,7 +37,7 @@ export class PlantCreatorModalComponent {
     try {
       imageFileBase64 = await this.resizeAndConvertFileToBase64(this.imageFile!, 1000, 1000);
       if (imageFileBase64.length >= 1048487) {
-        console.log('img too big')
+        console.log('Image is too big!')
         this.isSaving = false;
         return;
       }

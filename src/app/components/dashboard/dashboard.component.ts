@@ -1,6 +1,9 @@
-import {Component} from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {PlantCreatorModalComponent} from "./new-plant-card/plant-creator-modal/plant-creator-modal.component";
+import {Component, inject} from '@angular/core';
+import {Observable} from "rxjs";
+import {Plant} from "../../services/plant/plant";
+import {PlantService} from "../../services/plant/plant.service";
+import {User} from "@firebase/auth";
+import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,4 +11,8 @@ import {PlantCreatorModalComponent} from "./new-plant-card/plant-creator-modal/p
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+
+  private currentUser: User = inject(AuthService).getCurrentUser();
+
+  plants$: Observable<Plant[]> = inject(PlantService).loadPlants(this.currentUser.email!)
 }
