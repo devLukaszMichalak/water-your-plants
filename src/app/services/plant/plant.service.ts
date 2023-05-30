@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Plant} from "./plant";
-import {addDoc, collection, getFirestore, onSnapshot, query, where} from "@angular/fire/firestore";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { Plant } from './plant';
+import { addDoc, collection, collectionData, DocumentData, getFirestore, query, Query, where } from '@angular/fire/firestore';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,19 +22,8 @@ export class PlantService {
   }
 
   loadPlants(owner: string): Observable<Plant[]> {
-    return new Observable<Plant[]>((observer) => {
-      const unsubscribe = onSnapshot(query(this.plantsCollection, where('owner', '==', owner)), (querySnapshot) => {
-        const plants: Plant[] = [];
-        querySnapshot.forEach((doc) => {
-          plants.push(doc.data() as Plant);
-        });
-        observer.next(plants);
-      }, (error) => {
-        console.error('Error loading plants from Firestore:', error);
-        observer.next([]); // You can choose to emit an empty array or handle the error differently
-      });
-
-      return () => unsubscribe();
-    });
+    const queryFn: Query = query(this.plantsCollection, where('owner', '==', owner));
+    return collectionData(queryFn, {idField: 'id'})
+      .pipe(map((plants: DocumentData[]) => plants.map((task: DocumentData) => task as Plant)));
   }
 }
