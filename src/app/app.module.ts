@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {PlantCardComponent} from './components/dashboard/plant-card/plant-card.component';
 import {NewPlantCardComponent} from './components/dashboard/new-plant-card/new-plant-card.component';
 import {PlantCreatorModalComponent} from './components/dashboard/new-plant-card/plant-creator-modal/plant-creator-modal.component';
+import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {PlantCreatorModalComponent} from './components/dashboard/new-plant-card/
     DashboardComponent,
     PlantCardComponent,
     NewPlantCardComponent,
-    PlantCreatorModalComponent
+    PlantCreatorModalComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

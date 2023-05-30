@@ -21,7 +21,7 @@
                  formControlName="password">
 
           <div *ngIf="logInFailed" class="alert alert-danger mt-3" role="alert">
-            <span>Failed to log in.</span>
+            <span><i class="bi bi-exclamation-circle"></i> Failed to log in.</span>
           </div>
 
         </div>
@@ -30,7 +30,7 @@
           <button type="button" class="btn"
                   [ngClass]="logInForm.valid ? 'btn-primary' : 'btn-outline-primary'"
                   [disabled]="!logInForm.valid"
-                  (click)="logIn()">Log in
+                  (click)="logIn()"><i class="bi bi-arrow-right-circle"></i> Log in
           </button>
         </div>
       </div>
@@ -46,7 +46,7 @@
                  formControlName="repeatPassword">
 
           <div *ngIf="signUpFailed" class="alert alert-danger mt-3" role="alert">
-            <span>Failed to sign up.</span>
+            <span><i class="bi bi-exclamation-circle"></i> Failed to sign up.</span>
           </div>
 
         </div>
@@ -55,7 +55,7 @@
           <button type="button" class="btn"
                   [ngClass]="signUpForm.valid ? 'btn-primary' : 'btn-outline-primary'"
                   [disabled]="!signUpForm.valid"
-                  (click)="signUp()">Sign up
+                  (click)="signUp()"><i class="bi bi-box-arrow-in-up-right"></i> Sign up
           </button>
         </div>
 

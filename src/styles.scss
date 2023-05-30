@@ -118,3 +118,8 @@ body {
 .card-group > .card:not(:first-child) {
   border-color: $accent;
 }
+
+.h-100-w-nav {
+  height: calc(100% - 66px) !important;
+  margin-top: 66px !important;
+}

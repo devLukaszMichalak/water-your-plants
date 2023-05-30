@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {User, UserCredential} from "@firebase/auth";
-import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth';
+import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,10 @@ export class AuthService {
   private currentUserCredential: UserCredential | null = null;
 
   private auth = inject(Auth)
+
+  logOutUser(): Promise<void> {
+    return signOut(this.auth);
+  }
 
   getCurrentUser(): User {
     if (this.currentUserCredential) {
