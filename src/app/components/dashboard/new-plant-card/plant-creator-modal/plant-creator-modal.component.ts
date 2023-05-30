@@ -25,8 +25,14 @@ export class PlantCreatorModalComponent {
   newPlantForm = new FormGroup(
     {
       name: new FormControl('', [Validators.required]),
-      waterPerDay: new FormControl('', [Validators.required]),
-      waterPerWeek: new FormControl('', [Validators.required])
+      description: new FormControl('', []),
+      waterOnMonday: new FormControl(false, [Validators.required]),
+      waterOnTuesday: new FormControl(false, [Validators.required]),
+      waterOnWednesday: new FormControl(false, [Validators.required]),
+      waterOnThursday: new FormControl(false, [Validators.required]),
+      waterOnFriday: new FormControl(false, [Validators.required]),
+      waterOnSaturday: new FormControl(false, [Validators.required]),
+      waterOnSunday: new FormControl(false, [Validators.required])
     },
     {}
   );
@@ -48,8 +54,13 @@ export class PlantCreatorModalComponent {
     const plant: Plant = new Plant(
       this.newPlantForm.value.name!,
       this.currentUser.email!,
-      +this.newPlantForm.value.waterPerDay!,
-      +this.newPlantForm.value.waterPerWeek!,
+      !!this.newPlantForm.value.waterOnMonday,
+      !!this.newPlantForm.value.waterOnTuesday,
+      !!this.newPlantForm.value.waterOnWednesday,
+      !!this.newPlantForm.value.waterOnThursday,
+      !!this.newPlantForm.value.waterOnFriday,
+      !!this.newPlantForm.value.waterOnSaturday,
+      !!this.newPlantForm.value.waterOnSunday,
       imageFileBase64,
       null
     );

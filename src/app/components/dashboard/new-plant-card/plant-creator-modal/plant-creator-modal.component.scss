@@ -3,6 +3,7 @@
 .btn-close {
   border-color: transparent !important;
   transition: transform 0.2s !important;
+
   &:hover {
     transform: scale(1.1) !important;
   }
@@ -14,8 +15,21 @@
   color: styles.$accent;
   text-align: start !important;
 
-  &:active {
+  &:active:not(.cursor-standard) {
     border-color: styles.$primary;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 6px styles.$accent;
   }
+}
+
+.week-days-picker .btn-check:checked + .btn,
+.week-days-picker .btn.active,
+.week-days-picker .btn.show,
+.week-days-picker .btn:first-child:active,
+.week-days-picker :not(.btn-check) + .btn:active {
+  background-color: styles.$accent;
+  color: styles.$primary;
+}
+
+.cursor-standard {
+  cursor: initial;
 }
