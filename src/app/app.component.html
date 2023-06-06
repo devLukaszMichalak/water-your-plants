@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="authService.isAuthenticated()"></app-navbar>
 <div class="h-100-w-nav">
   <router-outlet></router-outlet>
 </div>

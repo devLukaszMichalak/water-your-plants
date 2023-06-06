@@ -9,14 +9,34 @@
 
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar"
          aria-labelledby="offcanvasNavbarLabel">
+
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+
       <div class="offcanvas-body">
-        <button class="btn btn-primary ms-auto" data-bs-dismiss="offcanvas" (click)="logout()"><i class="bi bi-power"></i> Logout</button>
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 gap-3">
+
+          <li>
+            <button class="btn btn-outline-primary ms-auto" data-bs-dismiss="offcanvas" (click)="toDashboard()"><i class="bi bi-border-all"></i> Dashboard</button>
+          </li>
+          <li>
+            <button class="btn btn-outline-primary ms-auto" data-bs-dismiss="offcanvas" (click)="toTodolist()"><i class="bi bi-card-checklist"></i> To-do list</button>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-primary ms-auto" data-bs-dismiss="offcanvas" (click)="logout()"><i class="bi bi-power"></i> Logout</button>
+          </li>
+
+        </ul>
 
       </div>
+
     </div>
+
   </div>
 </nav>

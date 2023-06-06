@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {PlantCreatorModalComponent} from "./plant-creator-modal/plant-creator-modal.component";
 
@@ -9,8 +9,7 @@ import {PlantCreatorModalComponent} from "./plant-creator-modal/plant-creator-mo
 })
 export class NewPlantCardComponent {
 
-  constructor(private modalService: NgbModal) {
-  }
+  private modalService = inject(NgbModal);
 
   openPlantCreator(): void {
     const modalRef = this.modalService.open(PlantCreatorModalComponent,

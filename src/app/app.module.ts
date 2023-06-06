@@ -16,6 +16,7 @@ import {PlantCardComponent} from './components/dashboard/plant-card/plant-card.c
 import {NewPlantCardComponent} from './components/dashboard/new-plant-card/new-plant-card.component';
 import {PlantCreatorModalComponent} from './components/dashboard/new-plant-card/plant-creator-modal/plant-creator-modal.component';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavbarComponent } from './components/navbar/navbar/navbar.component';
     PlantCardComponent,
     NewPlantCardComponent,
     PlantCreatorModalComponent,
-    NavbarComponent
+    NavbarComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
