@@ -12,7 +12,7 @@ export class AuthService {
   private auth = inject(Auth)
 
   logOutUser(): Promise<void> {
-    return signOut(this.auth);
+    return signOut(this.auth).then(() => {this.currentUserCredential = null;})
   }
 
   getCurrentUser(): User {
@@ -23,9 +23,7 @@ export class AuthService {
     }
   }
 
-  isAuthenticated(): boolean {
-    return this.currentUserCredential !== null;
-  }
+  isAuthenticated = (): boolean => this.currentUserCredential !== null;
 
   logInUser(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
