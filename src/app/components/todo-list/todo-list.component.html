@@ -1,4 +1,8 @@
-
 <div class="d-flex flex-row gap-4 flex-wrap justify-content-center align-items-center pt-2">
-  <p>todo-list works!</p>
+
+  <div class="card w-75" >
+    <div class="card-header"> Plants to water today: </div>
+    <div class="card-body" *ngFor="let plant of plantsToWater$ | async"> {{plant.name}} </div>
+  </div>
+
 </div>

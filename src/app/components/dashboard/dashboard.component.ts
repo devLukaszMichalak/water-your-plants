@@ -14,5 +14,5 @@ export class DashboardComponent {
 
   private currentUser: User = inject(AuthService).getCurrentUser();
 
-  plants$: Observable<Plant[]> = inject(PlantService).loadPlants(this.currentUser.email!)
+  plants$: Observable<Plant[]> = inject(PlantService).getPlants(this.currentUser.email!)
 }

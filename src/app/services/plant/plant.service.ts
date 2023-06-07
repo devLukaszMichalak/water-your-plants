@@ -15,8 +15,19 @@ export class PlantService {
     return addDoc(this.plantsCollection, {...plant})
   }
 
-  loadPlants(owner: string): Observable<Plant[]> {
+  getPlants(owner: string): Observable<Plant[]> {
     const queryFn: Query = query(this.plantsCollection, where('owner', '==', owner));
+
+    return collectionData(queryFn, {idField: 'id'})
+      .pipe(map((plants: DocumentData[]) => plants.map((task: DocumentData) => task as Plant)));
+  }
+
+  getPlantsToWater(owner: string, day: string): Observable<Plant[]> {
+    const queryFn: Query = query(this.plantsCollection,
+      where('owner', '==', owner),
+      where(`waterOn${day}`,'==', true)
+      );
+
     return collectionData(queryFn, {idField: 'id'})
       .pipe(map((plants: DocumentData[]) => plants.map((task: DocumentData) => task as Plant)));
   }
