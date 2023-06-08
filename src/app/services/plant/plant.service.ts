@@ -12,14 +12,15 @@ export class PlantService {
   private plantsCollection = collection(this.firestore, 'plants',)
 
   savePlant(plant: Plant): Promise<DocumentReference> {
-    return addDoc(this.plantsCollection, {...plant})
+    const plantData = (({ id, ...rest }) => rest)(plant);
+    return addDoc(this.plantsCollection, plantData);
   }
 
   getPlants(owner: string): Observable<Plant[]> {
     const queryFn: Query = query(this.plantsCollection, where('owner', '==', owner));
 
     return collectionData(queryFn, {idField: 'id'})
-      .pipe(map((plants: DocumentData[]) => plants.map((task: DocumentData) => task as Plant)));
+      .pipe(map((plants: DocumentData[]) => plants.map((plant: DocumentData) => plant as Plant)));
   }
 
   getPlantsToWater(owner: string, day: string): Observable<Plant[]> {
@@ -29,6 +30,6 @@ export class PlantService {
       );
 
     return collectionData(queryFn, {idField: 'id'})
-      .pipe(map((plants: DocumentData[]) => plants.map((task: DocumentData) => task as Plant)));
+      .pipe(map((plants: DocumentData[]) => plants.map((plant: DocumentData) => plant as Plant)));
   }
 }

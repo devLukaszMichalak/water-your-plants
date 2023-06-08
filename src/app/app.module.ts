@@ -17,6 +17,7 @@ import {NewPlantCardComponent} from './components/dashboard/new-plant-card/new-p
 import {PlantCreatorModalComponent} from './components/dashboard/new-plant-card/plant-creator-modal/plant-creator-modal.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import {VarDirective} from "./directives/ng-var.directive";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
     NewPlantCardComponent,
     PlantCreatorModalComponent,
     NavbarComponent,
-    TodoListComponent
+    TodoListComponent,
+    VarDirective
   ],
   imports: [
     BrowserModule,

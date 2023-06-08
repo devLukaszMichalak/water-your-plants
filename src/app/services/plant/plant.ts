@@ -1,5 +1,6 @@
 export class Plant {
   constructor(
+    public id: string | null,
     public name: string,
     public owner: string,
     public waterOnMonday: boolean,
@@ -10,6 +11,5 @@ export class Plant {
     public waterOnSaturday: boolean,
     public waterOnSunday: boolean,
     public image: string | null,
-    public lastWatering: Date | null
   ) {}
 }

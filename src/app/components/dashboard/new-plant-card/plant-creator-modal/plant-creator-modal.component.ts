@@ -52,6 +52,7 @@ export class PlantCreatorModalComponent {
     }
 
     const plant: Plant = new Plant(
+      null,
       this.newPlantForm.value.name!,
       this.currentUser.email!,
       !!this.newPlantForm.value.waterOnMonday,
@@ -61,8 +62,7 @@ export class PlantCreatorModalComponent {
       !!this.newPlantForm.value.waterOnFriday,
       !!this.newPlantForm.value.waterOnSaturday,
       !!this.newPlantForm.value.waterOnSunday,
-      imageFileBase64,
-      null
+      imageFileBase64
     );
 
     this.plantService.savePlant(plant).then(() => {
