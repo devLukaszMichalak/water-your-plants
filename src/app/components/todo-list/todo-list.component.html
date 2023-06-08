@@ -4,7 +4,7 @@
     <div class="card-header"> Plants to water today: </div>
     <div class="card-body" *ngFor="let plant of plantsToWater$ | async">
 
-      <div class="form-check" *ngVar="!!(getPlantWateringStatus$() | async) as wateringStatus">
+      <div class="form-check" *ngVar="!!(getPlantWateringStatus$(plant.id!) | async) as wateringStatus">
         <input class="form-check-input" type="checkbox"
                [checked]="wateringStatus"
                (change)="setPlantWateringValue(plant, wateringStatus)" id="defaultCheck1">

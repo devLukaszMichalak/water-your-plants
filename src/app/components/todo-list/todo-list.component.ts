@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {map, Observable, of, take} from "rxjs";
 import {Plant} from "../../services/plant/plant";
 import {PlantService} from "../../services/plant/plant.service";
 import {User} from "@firebase/auth";
@@ -25,8 +25,10 @@ export class TodoListComponent {
     return daysOfWeek[currentDateIndex];
   }
 
-  getPlantWateringStatus$() {
+  getPlantWateringStatus$(plantId: string):Observable<boolean> {
     return of(false)
+    // return this.wateringService.getWateringOfPlant(plantId, this.getCurrentDate())
+    //   .pipe(take(1),map(watering => watering.wasWatered))
   }
 
   setPlantWateringValue(plant: Plant, wateringStatus: boolean) {
