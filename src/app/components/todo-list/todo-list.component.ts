@@ -1,6 +1,5 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {map, Observable, of, take} from "rxjs";
-import {Plant} from "../../services/plant/plant";
+import {Component, inject} from '@angular/core';
+import {combineLatest, Observable, switchMap} from "rxjs";
 import {PlantService} from "../../services/plant/plant.service";
 import {User} from "@firebase/auth";
 import {AuthService} from "../../services/auth/auth.service";
@@ -17,7 +16,14 @@ export class TodoListComponent {
   private currentUser: User = inject(AuthService).getCurrentUser();
   private wateringService: WateringService = inject(WateringService);
 
-  plantsToWater$: Observable<Plant[]> = inject(PlantService).getPlantsToWater(this.currentUser.email!, this.getCurrentDay())
+  waterings$: Observable<Watering[]> = inject(PlantService)
+    .getPlantsToWater(this.currentUser.email!, this.getCurrentDay())
+    .pipe(
+      switchMap(plantsToWater => {
+        return combineLatest(plantsToWater.map(plant =>
+          this.wateringService.getWateringOfPlant(plant, this.getCurrentDate())
+        ));
+      }));
 
   private getCurrentDay(): string {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -25,18 +31,14 @@ export class TodoListComponent {
     return daysOfWeek[currentDateIndex];
   }
 
-  getPlantWateringStatus$(plantId: string):Observable<boolean> {
-    return of(false)
-    // return this.wateringService.getWateringOfPlant(plantId, this.getCurrentDate())
-    //   .pipe(take(1),map(watering => watering.wasWatered))
-  }
-
-  setPlantWateringValue(plant: Plant, wateringStatus: boolean) {
+  setPlantWateringValue(watering: Watering) {
     this.wateringService.updateWateringStatus(
       new Watering(
+        watering.id,
+        watering.plantName,
         this.getCurrentDate(),
-        wateringStatus,
-        plant.id!
+        !watering.wasWatered,
+        watering.plantId
       )
     ).then()
   }

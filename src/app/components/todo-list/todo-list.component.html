@@ -2,14 +2,14 @@
 
   <div class="card w-75" >
     <div class="card-header"> Plants to water today: </div>
-    <div class="card-body" *ngFor="let plant of plantsToWater$ | async">
+    <div class="card-body" *ngFor="let watering of waterings$ | async">
 
-      <div class="form-check" *ngVar="!!(getPlantWateringStatus$(plant.id!) | async) as wateringStatus">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox"
-               [checked]="wateringStatus"
-               (change)="setPlantWateringValue(plant, wateringStatus)" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1" [class.item-done]="">
-          {{plant.name}}
+               [checked]="watering.wasWatered"
+               (change)="setPlantWateringValue(watering)" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1" [class.item-done]="watering.wasWatered">
+          {{watering.plantName}}
         </label>
       </div>
 
