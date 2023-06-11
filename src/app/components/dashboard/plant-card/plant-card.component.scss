@@ -9,6 +9,27 @@
   }
 }
 
+@media (max-width: 767.98px) {
+  .card {
+    width: 90px !important;
+    height: 125px !important;
+  }
+
+  .big-flower-sign {
+    font-size: 60px !important;
+  }
+
+  .text-above-img-margin {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+
+  img {
+    max-height: 73px !important;
+    max-width: 73px !important;
+  }
+}
+
 .big-flower-sign {
   font-size: 120px;
 }

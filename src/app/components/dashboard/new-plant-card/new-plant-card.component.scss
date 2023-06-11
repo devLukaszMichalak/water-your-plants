@@ -12,3 +12,14 @@
 .big-plus-sign {
   font-size: 50px;
 }
+
+@media (max-width: 767.98px) {
+  .card {
+    width: 90px !important;
+    height: 125px !important;
+  }
+
+  .big-plus-sign {
+    font-size: 35px;
+  }
+}
