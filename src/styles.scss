@@ -59,7 +59,6 @@ body {
     background-color: $darkest-primary;
     border-color: $darkest-primary;
     color: $accent;
-    font-weight: bold !important;
   }
 }
 
@@ -74,14 +73,12 @@ body {
     color: $accent;
     background-color: $darker-primary;
     border-color: $accent;
-    font-weight: bold !important;
   }
 
   &:active {
     color: $accent;
     background-color: $darkest-primary;
     border-color: $accent;
-    font-weight: bold !important;
   }
 }
 
@@ -122,4 +119,18 @@ body {
 .h-100-w-nav {
   height: calc(100% - 66px) !important;
   margin-top: 66px !important;
+}
+
+.form-check-input {
+  transform: scale(1.5);
+  background-color: $accent;
+  border-color: $darkest-primary;
+
+  &:checked {
+    background-color: $darkest-primary;
+  }
+
+  &:focus {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.025) inset, 0 0 6px $accent;
+  }
 }
