@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {combineLatest, Observable, switchMap} from "rxjs";
+import { combineLatest, Observable, of, switchMap } from 'rxjs';
 import {PlantService} from "../../services/plant/plant.service";
 import {User} from "@firebase/auth";
 import {AuthService} from "../../services/auth/auth.service";
@@ -20,9 +20,13 @@ export class TodoListComponent {
     .getPlantsToWater(this.currentUser.email!, this.getCurrentDay())
     .pipe(
       switchMap(plantsToWater => {
-        return combineLatest(plantsToWater.map(plant =>
-          this.wateringService.getWateringOfPlant(plant, this.getCurrentDate())
-        ));
+        if (plantsToWater.length === 0) {
+          return of([]);
+        } else {
+          return combineLatest(plantsToWater.map(plant =>
+            this.wateringService.getWateringOfPlant(plant, this.getCurrentDate())
+          ));
+        }
       }));
 
   private getCurrentDay(): string {
