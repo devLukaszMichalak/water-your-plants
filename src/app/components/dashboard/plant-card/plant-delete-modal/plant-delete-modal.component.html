@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4>Delete a plant</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+</div>
+
+<div class="modal-body d-flex flex-column">
+    <div>Are you sure you want to completely delete <strong>{{plant?.name}}</strong>?</div>
+    <div>This action is irreversible!</div>
+</div>
+
+<div class="modal-footer">
+    <button *ngIf="!isSaving"
+            [disabled]="!plant"
+            type="button"
+            class="btn"
+            [ngClass]="!!plant ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="delete()">Delete
+    </button>
+    <button *ngIf="isSaving" class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+</div>

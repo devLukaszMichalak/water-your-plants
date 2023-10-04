@@ -1,8 +1,10 @@
 <div class="d-flex flex-row gap-4 flex-wrap justify-content-center align-items-center pt-2">
-  <app-plant-card *ngFor="let plant of plants$ | async"
-                  [plantImageUrl]="plant.image"
-                  [plantName]="plant.name">
-  </app-plant-card>
-
-  <app-new-plant-card></app-new-plant-card>
+    <ng-container *ngIf="plants$ | async as plants else loading">
+        <app-plant-card *ngFor="let plant of plants" [plant]="plant"></app-plant-card>
+        <app-new-plant-card></app-new-plant-card>
+    </ng-container>
 </div>
+
+<ng-template #loading>
+    <div class="spinner-border text-light" role="status"></div>
+</ng-template>

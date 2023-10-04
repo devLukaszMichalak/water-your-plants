@@ -1,4 +1,7 @@
-import {Component, Input} from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PlantDeleteModalComponent } from './plant-delete-modal/plant-delete-modal.component';
+import { Plant } from '../../../services/plant/plant';
 
 @Component({
   selector: 'app-plant-card',
@@ -6,10 +9,19 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./plant-card.component.scss']
 })
 export class PlantCardComponent {
-
+  
   @Input()
-  plantImageUrl: string | null = null;
-
-  @Input()
-  plantName: string = 'Plant name';
+  public plant: Plant | null = null;
+  
+  private modalService = inject(NgbModal);
+  
+  openPlantDelete(): void {
+    const modalRef = this.modalService.open(PlantDeleteModalComponent,
+      {
+        backdrop: 'static',
+        centered: true
+      });
+    
+    modalRef.componentInstance.plant = this.plant;
+  }
 }

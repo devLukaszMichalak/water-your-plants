@@ -1,19 +1,27 @@
 <div class="d-flex flex-row gap-4 flex-wrap justify-content-center align-items-center pt-2">
 
-  <div class="card w-75" >
-    <div class="card-header"> Plants to water today: </div>
-    <div class="card-body" *ngFor="let watering of waterings$ | async">
+    <div class="card w-75" *ngIf="waterings$ | async as waterings else loading">
+        <div class="card-header"> Plants to water today:</div>
+        <div class="card-body"
+             *ngFor="let watering of waterings"
+             (click)="setPlantWateringValue(watering)"
+             [class.item-done]="watering.wasWatered">
 
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox"
-               [checked]="watering.wasWatered"
-               (change)="setPlantWateringValue(watering)" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1" [class.item-done]="watering.wasWatered">
-          {{watering.plantName}}
-        </label>
-      </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                       [checked]="watering.wasWatered"
+                       id="checkbox">
 
+                <label class="form-check-label" for="checkbox" [class.item-done-text]="watering.wasWatered">
+                    {{watering.plantName}}
+                </label>
+            </div>
+
+        </div>
     </div>
-  </div>
 
 </div>
+
+<ng-template #loading>
+    <div class="spinner-border text-light" role="status"></div>
+</ng-template>

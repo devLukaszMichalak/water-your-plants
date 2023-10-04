@@ -1,3 +1,25 @@
-.item-done {
+@use 'styles';
+
+.item-done-text {
   text-decoration: line-through
+}
+
+.item-done {
+  opacity: 0.5;
+}
+
+.card-body {
+  cursor: pointer;
+
+  &.item-done {
+    background-color: styles.$darkest-primary;
+  }
+
+  .form-check > * {
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: styles.$darker-primary;
+  }
 }

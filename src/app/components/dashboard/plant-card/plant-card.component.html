@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card" (click)="openPlantDelete()">
   <div class="card-body d-flex flex-column align-items-center justify-content-center">
-    <div class="name-container text-center">{{plantName}}</div>
-    <img class="text-above-img-margin" *ngIf="plantImageUrl !== null" [src]="plantImageUrl" alt="plant-image">
-    <i *ngIf="plantImageUrl === null" class="bi bi-flower1 big-flower-sign"></i>
+    <div class="name-container text-center">{{plant?.name}}</div>
+    <img class="text-above-img-margin" *ngIf="plant?.image !== null" [src]="plant?.image" alt="plant-image">
+    <i *ngIf="plant?.image === null" class="bi bi-flower1 big-flower-sign"></i>
   </div>
 </div>

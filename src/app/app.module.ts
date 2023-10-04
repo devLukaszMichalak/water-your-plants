@@ -18,6 +18,7 @@ import {PlantCreatorModalComponent} from './components/dashboard/new-plant-card/
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import {VarDirective} from "./directives/ng-var.directive";
+import { PlantDeleteModalComponent } from './components/dashboard/plant-card/plant-delete-modal/plant-delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {VarDirective} from "./directives/ng-var.directive";
     PlantCreatorModalComponent,
     NavbarComponent,
     TodoListComponent,
-    VarDirective
+    VarDirective,
+    PlantDeleteModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,8 @@
+.btn-close {
+  border-color: transparent !important;
+  transition: transform 0.2s !important;
+
+  &:hover {
+    transform: scale(1.1) !important;
+  }
+}
