@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppRoutingModule} from './routing/app-routing.module';
@@ -20,6 +20,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import {VarDirective} from "./directives/ng-var.directive";
 import { PlantEditModalComponent } from './components/dashboard/plant-card/plant-edit-modal/plant-edit-modal.component';
 import { PlantDeleteModalComponent } from './components/dashboard/plant-card/plant-edit-modal/plant-delete-modal/plant-delete-modal.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,11 @@ import { PlantDeleteModalComponent } from './components/dashboard/plant-card/pla
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
