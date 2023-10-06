@@ -5,6 +5,7 @@ import {PlantService} from "../../../../services/plant/plant.service";
 import {Plant} from "../../../../services/plant/plant";
 import {User} from "@firebase/auth";
 import {AuthService} from "../../../../services/auth/auth.service";
+import { ImageService } from '../../../../services/image/image.service';
 
 @Component({
   selector: 'app-plant-creator-modal',
@@ -13,8 +14,9 @@ import {AuthService} from "../../../../services/auth/auth.service";
 })
 export class PlantCreatorModalComponent {
 
-  public activeModal = inject(NgbActiveModal)
-  public plantService = inject(PlantService)
+  private activeModal = inject(NgbActiveModal)
+  private plantService = inject(PlantService)
+  private imageService = inject(ImageService)
   private currentUser: User = inject(AuthService).getCurrentUser();
 
   public isSaving: boolean = false;
@@ -25,7 +27,6 @@ export class PlantCreatorModalComponent {
   newPlantForm = new FormGroup(
     {
       name: new FormControl('', [Validators.required]),
-      description: new FormControl('', []),
       waterOnMonday: new FormControl(false, [Validators.required]),
       waterOnTuesday: new FormControl(false, [Validators.required]),
       waterOnWednesday: new FormControl(false, [Validators.required]),
@@ -39,16 +40,18 @@ export class PlantCreatorModalComponent {
 
   async save() {
     this.isSaving = true;
-    let imageFileBase64;
-    try {
-      imageFileBase64 = await this.resizeAndConvertFileToBase64(this.imageFile!, 1000, 1000);
-      if (imageFileBase64.length >= 1048487) {
-        console.log('Image is too big!')
-        this.isSaving = false;
-        return;
+    let imageFileBase64 = null;
+    
+    if (this.imageFile) {
+      try {
+        imageFileBase64 = await this.imageService.resizeAndConvertFileToBase64(this.imageFile);
+        if (imageFileBase64.length >= 1048487) {
+          console.log('Image is too big!')
+          this.isSaving = false;
+          return;
+        }
+      } catch (ignored) {
       }
-    } catch (ignored) {
-      imageFileBase64 = null;
     }
 
     const plant: Plant = new Plant(
@@ -66,13 +69,13 @@ export class PlantCreatorModalComponent {
     );
 
     this.plantService.savePlant(plant).then(() => {
-      this.activeModal.close('Close click');
+      this.activeModal.close(true);
     })
 
   }
 
   dismiss() {
-    this.activeModal.dismiss('Cross click');
+    this.activeModal.close(false);
   }
 
   getFile = (): void => document.getElementById('formFile')!.click();
@@ -81,48 +84,6 @@ export class PlantCreatorModalComponent {
     const file: File = $event.target.files[0];
     this.imageFilename = file.name;
     this.imageFile = file;
-  }
-
-  private resizeAndConvertFileToBase64(file: File, maxWidth: number, maxHeight: number): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        const img = new Image();
-        img.onload = () => {
-          let width = img.width;
-          let height = img.height;
-          if (width > maxWidth) {
-            height *= maxWidth / width;
-            width = maxWidth;
-          }
-          if (height > maxHeight) {
-            width *= maxHeight / height;
-            height = maxHeight;
-          }
-
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-
-          canvas.width = width;
-          canvas.height = height;
-
-          ctx?.drawImage(img, 0, 0, width, height);
-
-          const base64String = canvas.toDataURL(file.type);
-
-          resolve(base64String);
-        };
-
-        img.src = reader.result as string;
-      };
-
-      reader.onerror = (error) => {
-        reject(error);
-      };
-
-      reader.readAsDataURL(file);
-    });
   }
 
 }

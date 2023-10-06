@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { Plant } from '../../../../services/plant/plant';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { PlantService } from '../../../../services/plant/plant.service';
+import { Plant } from '../../../../../services/plant/plant';
+import { PlantService } from '../../../../../services/plant/plant.service';
 
 @Component({
   selector: 'app-plant-delete-modal',
@@ -15,15 +15,13 @@ export class PlantDeleteModalComponent {
   
   public plant: Plant | null = null;
   
-  public isSaving: boolean = false;
-  
   delete() {
     this.plantService.deletePlant(this.plant!).then(() => {
-      this.activeModal.close('Close click');
+      this.activeModal.close(true);
     });
   }
   
   dismiss() {
-    this.activeModal.dismiss('Cross click');
+    this.activeModal.close(false);
   }
 }

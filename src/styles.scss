@@ -44,6 +44,24 @@ body {
   }
 }
 
+.btn-dark {
+  background-color: $darkest-primary;
+  border-color: $darkest-primary;
+  color: $accent;
+  font-weight: bold !important;
+  transition: transform 0.2s !important;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    background-color: $accent;
+    border-color: $accent;
+    color: $darkest-primary;
+  }
+}
+
 .btn-primary {
   background-color: $accent;
   border-color: $accent;

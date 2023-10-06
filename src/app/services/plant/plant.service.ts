@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Plant } from './plant';
-import { addDoc, collection, collectionData, deleteDoc, doc, DocumentData, DocumentReference, getFirestore, query, Query, where } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, DocumentData, DocumentReference, getFirestore, query, Query, updateDoc, where } from '@angular/fire/firestore';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -19,6 +19,12 @@ export class PlantService {
   deletePlant(plant: Plant): Promise<void> {
     const plantDocRef = doc(this.plantsCollection, plant.id!);
     return deleteDoc(plantDocRef);
+  }
+  
+  updatePlant(plant: Plant): Promise<void> {
+    const {id, ...updatedData} = plant;
+    const plantDocRef = doc(this.plantsCollection, id!);
+    return updateDoc(plantDocRef, updatedData);
   }
   
   getPlants(owner: string): Observable<Plant[]> {

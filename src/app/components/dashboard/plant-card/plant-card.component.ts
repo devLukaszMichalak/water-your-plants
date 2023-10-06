@@ -1,7 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PlantDeleteModalComponent } from './plant-delete-modal/plant-delete-modal.component';
 import { Plant } from '../../../services/plant/plant';
+import { PlantEditModalComponent } from './plant-edit-modal/plant-edit-modal.component';
 
 @Component({
   selector: 'app-plant-card',
@@ -15,8 +15,8 @@ export class PlantCardComponent {
   
   private modalService = inject(NgbModal);
   
-  openPlantDelete(): void {
-    const modalRef = this.modalService.open(PlantDeleteModalComponent,
+  openPlantEdit(): void {
+    const modalRef = this.modalService.open(PlantEditModalComponent,
       {
         backdrop: 'static',
         centered: true

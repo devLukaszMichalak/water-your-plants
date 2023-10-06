@@ -1,0 +1,70 @@
+<div class="modal-header">
+    <h4>Create new plant</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+</div>
+
+<div class="modal-body d-flex flex-column gap-3" [formGroup]="editPlantForm">
+
+    <input placeholder="Name" class="form-control" formControlName="name">
+
+    <div class="btn custom-input-btn cursor-standard">Watering on:
+        <div class="week-days-picker d-flex flex-row flex-wrap gap-1 justify-content-center align-items-center mt-2 mb-2">
+            <input type="checkbox" class="btn-check" id="btn-check-outlined-monday" formControlName="waterOnMonday"
+                   value="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn-check-outlined-monday">Monday</label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-outlined-tuesday" formControlName="waterOnTuesday"
+                   value="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn-check-outlined-tuesday">Tuesday</label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-outlined-wednesday" formControlName="waterOnWednesday"
+                   value="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn-check-outlined-wednesday">Wednesday</label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-outlined-thursday" formControlName="waterOnThursday"
+                   value="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn-check-outlined-thursday">Thursday</label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-outlined-friday" formControlName="waterOnFriday"
+                   value="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn-check-outlined-friday">Friday</label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-outlined-saturday" formControlName="waterOnSaturday"
+                   value="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn-check-outlined-saturday">Saturday</label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-outlined-sunday" formControlName="waterOnSunday"
+                   value="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn-check-outlined-sunday">Sunday</label><br>
+
+        </div>
+    </div>
+
+    <ng-container *ngIf="!plant?.image">
+        <a class="btn custom-input-btn" (click)="getFile()" type="button">{{imageFilename}}</a>
+        <input class="form-control d-none" type="file" id="formFile" (change)="uploadFile($event)">
+    </ng-container>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" (click)="dismiss()">
+        Abort
+    </button>
+
+    <button class="btn btn-dark" type="button" (click)="openPlantDelete()">
+        Delete
+    </button>
+
+    <button *ngIf="!isSaving"
+            [disabled]="editPlantForm.invalid || editPlantForm.pristine"
+            type="button"
+            class="btn"
+            [ngClass]="editPlantForm.valid && editPlantForm.dirty ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="save()">Update
+    </button>
+    <button *ngIf="isSaving" class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+</div>

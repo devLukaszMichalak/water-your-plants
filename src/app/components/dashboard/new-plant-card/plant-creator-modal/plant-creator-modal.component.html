@@ -4,8 +4,9 @@
 </div>
 
 <div class="modal-body d-flex flex-column gap-3" [formGroup]="newPlantForm">
+
   <input placeholder="Name" class="form-control" formControlName="name">
-  <input type="text" placeholder="Description" class="form-control" formControlName="description">
+
   <div class="btn custom-input-btn cursor-standard">Watering on:
     <div class="week-days-picker d-flex flex-row flex-wrap gap-1 justify-content-center align-items-center mt-2 mb-2">
       <input type="checkbox" class="btn-check" id="btn-check-outlined-monday" formControlName="waterOnMonday"
@@ -45,7 +46,7 @@
 
 <div class="modal-footer">
   <button *ngIf="!isSaving"
-          [disabled]="!newPlantForm.valid"
+          [disabled]="newPlantForm.invalid"
           type="button"
           class="btn"
           [ngClass]="newPlantForm.valid ? 'btn-primary' : 'btn-outline-primary'"
